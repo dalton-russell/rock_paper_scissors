@@ -35,9 +35,6 @@ function generateRandom(){
     return Math.floor(Math.random()*3)+1;
 }
 
-const computerSelection = computerPlay();
-const playerSelection = playerPlay();
-
 function playRound(playerSelection, computerSelection){
     if(playerSelection == computerSelection){
         return "That was a tie."
@@ -68,8 +65,16 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-console.log(playRound);
 
+function game(){
+    for(let i = 0; i < 5; i++ ){
+        const computerSelection = computerPlay();
+        const playerSelection = playerPlay();
+        console.log(playRound(playerSelection,computerSelection));
+    }
+}
+
+game();
 
 
 
