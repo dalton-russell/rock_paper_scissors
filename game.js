@@ -11,10 +11,13 @@ function computerPlay(){
     let number = generateRandom();
     switch(number){
         case 1:
+            displayComputerSelection("rock");
             return "rock";
         case 2:
+            displayComputerSelection("paper");
             return "paper";
         default:
+            displayComputerSelection("scissors");
             return "scissors";
     }
 }
@@ -26,6 +29,7 @@ function listen(){
     buttons.forEach((button) => {
             button.addEventListener('click', () =>
             {
+                displayUserSelection(button.id);
                 playRound(button.id, computerPlay());
             });
         })
@@ -109,6 +113,62 @@ function gameOver(){
     }
     else {
         console.log("Tie game.")
+    }
+}
+
+function displayUserSelection(choice){
+    let img = document.createElement("img");
+    let src = document.getElementById("playerChoice");
+    if(src.childNodes[0] != null){
+        src.removeChild(src.childNodes[0]);
+    }
+    switch(choice){
+        case "rock":
+            img.src = "rock.png";
+            img.style.width = "200px";
+            img.style.height = "200px";
+            src.appendChild(img);
+            break;
+        case "paper":
+            img.src = "paper.png";
+            img.style.width = "200px";
+            img.style.height = "200px";
+            src.appendChild(img);
+            break;
+        case "scissors":
+            img.src = "scissors.png";
+            img.style.width = "200px";
+            img.style.height = "200px";
+            src.appendChild(img);
+            break;
+    }
+}
+
+function displayComputerSelection(choice){
+    let img = document.createElement("img");
+    let src = document.getElementById("computerChoice");
+    if(src.childNodes[0] != null){
+        src.removeChild(src.childNodes[0]);
+    }
+    switch(choice){
+        case "rock":
+            img.src = "rock.png";
+            img.style.width = "200px";
+            img.style.height = "200px";
+            src.appendChild(img);
+            break;
+        case "paper":
+            img.src = "paper.png";
+            img.style.width = "200px";
+            img.style.height = "200px";
+            src.appendChild(img);
+            break;
+        case "scissors":
+            img.src = "scissors.png";
+            img.style.width = "200px";
+            img.style.height = "200px";
+            src.appendChild(img);
+            break;
     }
 }
 

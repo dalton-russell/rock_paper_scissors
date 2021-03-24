@@ -1,7 +1,6 @@
 body {
     background-color: black;
     color: white;
-    
 }
 
 h1 {
@@ -13,9 +12,19 @@ h1:hover {
     color: red;
 }
 
+.button {
+    border-color: white !important;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    border: solid;
+    border-radius: 20px;
+}
 
-button:hover {
-    border-color: red;
+.button:hover {
+    transform: scale(1.1);
+    border-color: red !important;
+    box-shadow: 0 0 20px 1px red;
 }
 
 #buttons {
@@ -26,44 +35,39 @@ button:hover {
 #rock {
     background-image: url('rock.png');
     background-size: contain;
-    width: 200px;
-    height: 200px;
-    margin: 20px;
-    border: solid;
-    border-color: white;
-    border-radius: 20px;
-}
-
-#rock:hover {
-    border-color: red;
 }
 
 #paper {
     background-image: url('paper.png');
     background-size: contain;
-    width: 200px;
-    height: 200px;
-    margin: 20px;
-    border: solid;
-    border-color: white;
-    border-radius: 20px;
-}
-
-#paper:hover {
-    border-color: red;
 }
 
 #scissors {
     background-image: url('scissors.png');
     background-size: contain;
+}
+
+#choices {
+    display: flex;
+    border: 1px solid red;
+    justify-content: center;
+    height: 240px;
+    width: auto;
+    padding: 100px;
+}
+
+#playerChoice {
     width: 200px;
     height: 200px;
     margin: 20px;
-    border: solid;
-    border-color: white;
-    border-radius: 20px;
 }
 
-#scissors:hover {
-    border-color: red;
+#computerChoice {
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+}
+
+*:focus {
+    outline: 0 !important;
 }
