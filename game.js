@@ -80,22 +80,23 @@ function game(){
 }  
     
 function roundOutcome(playerSelection, computerSelection, winner){
+    let textOut = document.getElementById("output");
     switch(winner){
         case 0:
-            console.log("That was a tie.")
+            textOut.innerHTML = "That was a tie.";
             round++;
             document.getElementById("humanScore").innerHTML =  "You: " + playerScore;
             document.getElementById("computerScore").innerHTML =   "Me: " + computerScore;
             break;
         case 1:
-            console.log("You win, " + playerSelection + " beats " + computerSelection + ".");
+            textOut.innerHTML = "You win, " + playerSelection + " beats " + computerSelection + ".";
             round++;
             playerScore++;
             document.getElementById("humanScore").innerHTML =   "You: " + playerScore;
             document.getElementById("computerScore").innerHTML =   "Me: " + computerScore;
             break;
         case 2:
-            console.log("You lose, " + computerSelection + " beats " + playerSelection + ".");
+            textOut.innerHTML = "You lose, " + computerSelection + " beats " + playerSelection + ".";
             round++;
             computerScore++;
             document.getElementById("humanScore").innerHTML =   "You: " + playerScore;
@@ -108,7 +109,8 @@ function roundOutcome(playerSelection, computerSelection, winner){
 }
     
 function gameOver(){
-    console.log("Game Over!!!");
+    let textOut = document.getElementById("output");
+    //textOut.innerHTML = "Game Over!!!";
     console.log("Your Score: " + playerScore);
     console.log("Computer Score: " + computerScore);
     if(playerScore > computerScore){
