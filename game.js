@@ -19,21 +19,17 @@ function computerPlay(){
     }
 }
 
-//returns user input from prompt
-function playerPlay(){
-    let noPlay = true;
-    while(noPlay){
-        let selection = prompt("Type Rock, Paper, or Scissors");
-        selection = selection.toLowerCase();
-        switch(selection){
-            case "rock":
-                return "rock";
-            case "paper":
-                return "paper";
-            case "scissors":
-                return "scissors";
-        }
-    }
+//calls playRound with button pressed and computerPlay
+function listen(){
+    const buttons = document.querySelectorAll('button');
+    
+    buttons.forEach((button) => {
+            button.addEventListener('click', () =>
+            {
+                playRound(button.id, computerPlay());
+            });
+        })
+    
 }
 
 //returns 1, 2, or 3
@@ -41,33 +37,33 @@ function generateRandom(){
     return Math.floor(Math.random()*3)+1;
 }
 
-//returns 0 for tie, 1 for player win, and 2 for computer win
+//0 for tie, 1 for player win, and 2 for computer win
 function playRound(playerSelection, computerSelection){
     if(playerSelection == computerSelection){
-        return 0;
+        roundOutcome(playerSelection, computerSelection, 0);
     }
     if(playerSelection == "rock"){
         if(computerSelection == "paper"){
-            return 2;
+            roundOutcome(playerSelection, computerSelection, 2);
         }
         if(computerSelection == "scissors"){
-            return 1;
+            roundOutcome(playerSelection, computerSelection, 1);
         }
     }
     if(playerSelection == "paper"){
         if(computerSelection == "rock"){
-            return 1;
+            roundOutcome(playerSelection, computerSelection, 1);
         }
         if(computerSelection == "scissors"){
-            return 2;
+            roundOutcome(playerSelection, computerSelection, 2);
         }
     }
     if(playerSelection == "scissors"){
         if(computerSelection == "rock"){
-            return 2;
+            roundOutcome(playerSelection, computerSelection, 2);
         }
         if(computerSelection == "paper"){
-            return 1;
+            roundOutcome(playerSelection, computerSelection, 1);
         }
     }
 }
@@ -75,26 +71,33 @@ function playRound(playerSelection, computerSelection){
 //5 round game
 //prints score and outcome to console
 function game(){
-    let computerScore = 0;
-    let playerScore = 0;
-    for(let i = 0; i < 5; i++ ){
-        const computerSelection = computerPlay();
-        const playerSelection = playerPlay();
-        let  winner = playRound(playerSelection,computerSelection);
-        switch(winner){
-            case 0:
-                console.log("That was a tie.")
-                break;
-            case 1:
-                console.log("You win, " + playerSelection + " beats " + computerSelection + ".");
-                playerScore++;
-                break;
-            case 2:
-                console.log("You lose, " + computerSelection + " beats " + playerSelection + ".");
-                computerScore++;
-                break;
-        }
+    console.log("game");
+    listen();
+}  
+    
+function roundOutcome(playerSelection, computerSelection, winner){
+    switch(winner){
+        case 0:
+            console.log("That was a tie.")
+            round++;
+            break;
+        case 1:
+            console.log("You win, " + playerSelection + " beats " + computerSelection + ".");
+            round++;
+            playerScore++;
+            break;
+        case 2:
+            console.log("You lose, " + computerSelection + " beats " + playerSelection + ".");
+            round++;
+            computerScore++;
+            break;
     }
+    if(round > 4){
+        gameOver();
+    }
+}
+    
+function gameOver(){
     console.log("Game Over!!!");
     console.log("Your Score: " + playerScore);
     console.log("Computer Score: " + computerScore);
@@ -110,7 +113,12 @@ function game(){
 }
 
 //starts game
+console.log("start");
+let computerScore = 0;
+let playerScore = 0;
+let round = 0;
 game();
+
 
 
 
