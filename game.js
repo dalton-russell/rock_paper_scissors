@@ -84,16 +84,22 @@ function roundOutcome(playerSelection, computerSelection, winner){
         case 0:
             console.log("That was a tie.")
             round++;
+            document.getElementById("humanScore").innerHTML =  "You: " + playerScore;
+            document.getElementById("computerScore").innerHTML =   "Me: " + computerScore;
             break;
         case 1:
             console.log("You win, " + playerSelection + " beats " + computerSelection + ".");
             round++;
             playerScore++;
+            document.getElementById("humanScore").innerHTML =   "You: " + playerScore;
+            document.getElementById("computerScore").innerHTML =   "Me: " + computerScore;
             break;
         case 2:
             console.log("You lose, " + computerSelection + " beats " + playerSelection + ".");
             round++;
             computerScore++;
+            document.getElementById("humanScore").innerHTML =   "You: " + playerScore;
+            document.getElementById("computerScore").innerHTML =   "Me: " + computerScore;
             break;
     }
     if(round > 4){
