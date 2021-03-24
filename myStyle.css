@@ -1,0 +1,69 @@
+body {
+    background-color: black;
+    color: white;
+    
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+}
+
+h1:hover {
+    color: red;
+}
+
+
+button:hover {
+    border-color: red;
+}
+
+#buttons {
+    display: flex;
+    justify-content: center;
+}
+
+#rock {
+    background-image: url('rock.png');
+    background-size: contain;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    border: solid;
+    border-color: white;
+    border-radius: 20px;
+}
+
+#rock:hover {
+    border-color: red;
+}
+
+#paper {
+    background-image: url('paper.png');
+    background-size: contain;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    border: solid;
+    border-color: white;
+    border-radius: 20px;
+}
+
+#paper:hover {
+    border-color: red;
+}
+
+#scissors {
+    background-image: url('scissors.png');
+    background-size: contain;
+    width: 200px;
+    height: 200px;
+    margin: 20px;
+    border: solid;
+    border-color: white;
+    border-radius: 20px;
+}
+
+#scissors:hover {
+    border-color: red;
+}
