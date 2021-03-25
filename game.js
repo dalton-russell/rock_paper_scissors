@@ -29,12 +29,12 @@ function listen(){
     buttons.forEach((button) => {
             button.addEventListener('click', () =>
             {
-                if(round < 4){
+                if(round < 5){
                 displayUserSelection(button.id);
                 playRound(button.id, computerPlay());
                 }
-                else{
-                    gameOver();
+                else{ //no longer calling funtions on click
+                    
                 }
             });
         })
@@ -48,6 +48,7 @@ function generateRandom(){
 
 //0 for tie, 1 for player win, and 2 for computer win
 function playRound(playerSelection, computerSelection){
+    
     if(playerSelection == computerSelection){
         roundOutcome(playerSelection, computerSelection, 0);
     }
@@ -108,6 +109,9 @@ function roundOutcome(playerSelection, computerSelection, winner){
             document.getElementById("computerScore").innerHTML =   "Me: " + computerScore;
             break;
     }
+    if(round > 4){
+        gameOver();
+    }
 }
 
 //print game outcome
@@ -125,15 +129,22 @@ function gameOver(){
     playAgain();
 } 
 
+//create and listen for play again button press
 function playAgain(){
     let btn = document.createElement("BUTTON");
     btn.innerHTML = "Play Again";
     let playAgainBtn = document.getElementById("playAgain");
-    playAgainBtn.style.display = "flex";
-    playAgainBtn.style.justifyContent = "center";
-    playAgainBtn.style.width = "auto";
-    playAgainBtn.style.height = "auto";
-    playAgainBtn.appendChild(btn);
+    if(playAgainBtn.childNodes[0] == null){ //only create one button
+        playAgainBtn.style.display = "flex";
+        playAgainBtn.style.justifyContent = "center";
+        playAgainBtn.style.width = "auto";
+        playAgainBtn.style.height = "auto";
+        playAgainBtn.appendChild(btn);
+        btn.addEventListener('click', () =>
+            {
+                location.reload();
+            });
+    }
 }
 
 function displayUserSelection(choice){
