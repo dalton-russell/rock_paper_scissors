@@ -4,7 +4,7 @@
 //Compares and prints round winner to console
 //Game lasts 5 rounds
 //Dalton Russell
-//3/17/2021
+//3/15/2021
 
 //returns rock, paper, or scissors
 function computerPlay(){
@@ -29,7 +29,7 @@ function listen(){
     buttons.forEach((button) => {
             button.addEventListener('click', () =>
             {
-                if(round < 5){
+                if(round < 4){
                 displayUserSelection(button.id);
                 playRound(button.id, computerPlay());
                 }
@@ -77,11 +77,13 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+//start game
 function game(){
     console.log("game");
     listen();
 }  
-    
+
+//prints round outcome
 function roundOutcome(playerSelection, computerSelection, winner){
     let textOut = document.getElementById("output");
     switch(winner){
@@ -106,11 +108,9 @@ function roundOutcome(playerSelection, computerSelection, winner){
             document.getElementById("computerScore").innerHTML =   "Me: " + computerScore;
             break;
     }
-    if(round > 4){
-        gameOver();
-    }
 }
-    
+
+//print game outcome
 function gameOver(){
     let textOut = document.getElementById("output");
     if(playerScore > computerScore){
@@ -122,6 +122,18 @@ function gameOver(){
     else {
         textOut.innerHTML = "Game Over!!! Tie game."
     }
+    playAgain();
+} 
+
+function playAgain(){
+    let btn = document.createElement("BUTTON");
+    btn.innerHTML = "Play Again";
+    let playAgainBtn = document.getElementById("playAgain");
+    playAgainBtn.style.display = "flex";
+    playAgainBtn.style.justifyContent = "center";
+    playAgainBtn.style.width = "auto";
+    playAgainBtn.style.height = "auto";
+    playAgainBtn.appendChild(btn);
 }
 
 function displayUserSelection(choice){
