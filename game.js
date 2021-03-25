@@ -29,8 +29,13 @@ function listen(){
     buttons.forEach((button) => {
             button.addEventListener('click', () =>
             {
+                if(round < 5){
                 displayUserSelection(button.id);
                 playRound(button.id, computerPlay());
+                }
+                else{
+                    gameOver();
+                }
             });
         })
     
@@ -72,8 +77,6 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
-//5 round game
-//prints score and outcome to console
 function game(){
     console.log("game");
     listen();
@@ -110,17 +113,14 @@ function roundOutcome(playerSelection, computerSelection, winner){
     
 function gameOver(){
     let textOut = document.getElementById("output");
-    //textOut.innerHTML = "Game Over!!!";
-    console.log("Your Score: " + playerScore);
-    console.log("Computer Score: " + computerScore);
     if(playerScore > computerScore){
-        console.log("You are the winner.")
+        textOut.innerHTML = "Game Over!!! You are the winner."
     }
     else if(computerScore > playerScore){
-        console.log("You are the loser.")
+        textOut.innerHTML = "Game Over!!! You are the loser."
     }
     else {
-        console.log("Tie game.")
+        textOut.innerHTML = "Game Over!!! Tie game."
     }
 }
 
